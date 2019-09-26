@@ -17,8 +17,8 @@ Future<void> main() async {
     routes: <String, WidgetBuilder>{
       // When navigating to the "/" route, build the FirstScreen widget.
       '/': (context) => MainPage(title: 'Flower2'),
-      UploadPictureScreen.TAG: (context) => TakePictureScreen(camera: firstCamera),
-      TakePictureScreen.TAG: (context) => UploadPictureScreen(),
+      TakePictureScreen.TAG: (context) => TakePictureScreen(camera: firstCamera),
+      UploadPictureScreen.TAG: (context) => UploadPictureScreen(),
     },
   ));
 }
