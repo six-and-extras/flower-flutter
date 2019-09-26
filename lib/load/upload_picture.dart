@@ -13,10 +13,11 @@ class UploadPictureScreen extends StatefulWidget {
 
 class _UploadPictureScreenState extends State<UploadPictureScreen> {
   Future<File> imageFile;
+
   @override
   void initState() {
-    super.initState();
     pickImageFromGallery(ImageSource.gallery);
+    super.initState();
   }
 
   pickImageFromGallery(ImageSource source) {
