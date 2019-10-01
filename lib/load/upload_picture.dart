@@ -6,13 +6,19 @@ import 'package:image_picker/image_picker.dart';
 
 class UploadPictureScreen extends StatefulWidget {
   static const String TAG = 'uploadPicture';
-  
+
   @override
   _UploadPictureScreenState createState() => _UploadPictureScreenState();
 }
 
 class _UploadPictureScreenState extends State<UploadPictureScreen> {
   Future<File> imageFile;
+
+  @override
+  void initState() {
+    pickImageFromGallery(ImageSource.gallery);
+    super.initState();
+  }
 
   pickImageFromGallery(ImageSource source) {
     setState(() {
@@ -54,13 +60,6 @@ class _UploadPictureScreenState extends State<UploadPictureScreen> {
       body: Center(
           child: Column(children: <Widget>[
         showImage(),
-        FloatingActionButton(
-            heroTag: "pickImage",
-            onPressed: () {
-              pickImageFromGallery(ImageSource.gallery);
-            },
-            tooltip: 'Select an image',
-            child: Icon(Icons.image)),
         FloatingActionButton(
           heroTag: "backToHomeScreenFromUploadScreen",
           onPressed: () {
