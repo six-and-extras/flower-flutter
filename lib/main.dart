@@ -7,8 +7,10 @@ import 'constants.dart';
 Future<void> main() async {
   // Obtain a list of the available cameras on the device.
   final cameras = await availableCameras();
+
   // Get a specific camera from the list of available cameras.
   final firstCamera = cameras.first;
+  final secondCamera = cameras[1];
   runApp(MaterialApp(
     title: 'Flower2',
     theme: ThemeData.dark(),
@@ -17,7 +19,8 @@ Future<void> main() async {
     routes: <String, WidgetBuilder>{
       // When navigating to the "/" route, build the FirstScreen widget.
       '/': (context) => MainPage(title: 'Flower2'),
-      TakePictureScreen.TAG: (context) => TakePictureScreen(camera: firstCamera),
+      TakePictureScreen.TAG1: (context) => TakePictureScreen(camera: firstCamera),
+      TakePictureScreen.TAG2: (context) => TakePictureScreen(camera: secondCamera),
       UploadPictureScreen.TAG: (context) => UploadPictureScreen(),
     },
   ));
@@ -36,6 +39,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(widget.title),
         ),
@@ -56,11 +60,19 @@ class _MainPageState extends State<MainPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   FloatingActionButton(
-                    heroTag: TakePictureScreen.TAG,
+                    heroTag: TakePictureScreen.TAG1,
                     onPressed: () {
-                      Navigator.pushNamed(this.context, TakePictureScreen.TAG);
+                      Navigator.pushNamed(this.context, TakePictureScreen.TAG1);
                     },
-                    tooltip: 'Take a photo',
+                    tooltip: 'Take a rear photo',
+                    child: Icon(Icons.camera),
+                  ),
+                  FloatingActionButton(
+                    heroTag: TakePictureScreen.TAG2,
+                    onPressed: () {
+                      Navigator.pushNamed(this.context, TakePictureScreen.TAG2);
+                    },
+                    tooltip: 'Take a front photo',
                     child: Icon(Icons.camera),
                   ),
                   FloatingActionButton(

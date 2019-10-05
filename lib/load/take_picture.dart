@@ -8,7 +8,8 @@ import 'package:path_provider/path_provider.dart';
 
 // A screen that allows users to take a picture using a given camera.
 class TakePictureScreen extends StatefulWidget {
-  static const String TAG = 'takePicture';
+  static const String TAG1 = 'takeRearPicture';
+  static const String TAG2 = 'takeFrontPicture';
   final CameraDescription camera;
 
   const TakePictureScreen({

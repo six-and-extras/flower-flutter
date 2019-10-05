@@ -19,3 +19,15 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+
+.DS_Store
+.atom/
+.idea
+.packages
+.pub/
+build/
+android/*
+ios/*
+packages
+pubspec.lock
+.flutter-plugins
